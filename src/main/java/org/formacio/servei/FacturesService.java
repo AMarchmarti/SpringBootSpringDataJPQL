@@ -33,14 +33,21 @@ public class FacturesService {
 		Optional<Factura> factura = facturesRepositori.findById(idFactura);
 
 		if (factura.isPresent()){
-		LiniaFactura linia = new LiniaFactura();
-		linia.setProducte(producte);
-		linia.setTotal(totalProducte);
-		factura.get().getLinies().add(linia);
-		facturesRepositori.save(factura.get());
+			LiniaFactura linia = new LiniaFactura();
+			linia.setProducte(producte);
+			linia.setTotal(totalProducte);
+			factura.get().getLinies().add(linia);
+			facturesRepositori.save(factura.get());
+
+			premi(factura.get());
 		}
 		return factura.get();
+	}
 
-
+	public void premi(Factura factura){
+		final int LINIAGUANYADORA = 4;
+		if(factura.getLinies().size()>= LINIAGUANYADORA){
+			service.notificaRegal(factura.getClient().getEmail());
+		}
 	}
 }
