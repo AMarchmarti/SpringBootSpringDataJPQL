@@ -1,5 +1,7 @@
 package org.formacio.domain;
 
+import org.hibernate.annotations.Cascade;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,6 +22,7 @@ public class Factura {
 
 	@OneToMany
 	@JoinColumn(name = "lin_factura")
+	@Cascade(value = org.hibernate.annotations.CascadeType.ALL)
 	private Set<LiniaFactura> linies = new HashSet<>();
 
 	public Long getId() {
