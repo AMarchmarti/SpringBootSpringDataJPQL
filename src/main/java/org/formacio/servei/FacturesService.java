@@ -1,6 +1,8 @@
 package org.formacio.servei;
 
 import org.formacio.domain.Factura;
+import org.formacio.repositori.FacturesRepositori;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class FacturesService {
 
@@ -13,6 +15,8 @@ public class FacturesService {
 	 * 
 	 * Per implementar aquest metode necessitareu una referencia (dependencia) a FacturesRepositori
 	 */
+
+
 	public Factura afegirProducte (long idFactura, String producte, int totalProducte) {
 		
 		return null;
