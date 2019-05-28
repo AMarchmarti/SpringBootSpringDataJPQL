@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+
 public interface FacturesRepositori extends CrudRepository<Factura, Long> {
 
 	@Query("select sum(linia.total) from Factura f join f.linies linia where f.client.nom = ?1")
