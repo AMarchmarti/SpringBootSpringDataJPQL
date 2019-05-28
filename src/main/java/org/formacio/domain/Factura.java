@@ -16,13 +16,12 @@ public class Factura {
 	@Column(name = "fac_id")
 	private Long id;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "fac_client")
 	private Client client;
 
-	@OneToMany
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "lin_factura")
-	@Cascade(value = org.hibernate.annotations.CascadeType.ALL)
 	private Set<LiniaFactura> linies = new HashSet<>();
 
 	public Long getId() {
